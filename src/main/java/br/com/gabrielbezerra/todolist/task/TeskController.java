@@ -14,9 +14,9 @@ public class TeskController {
     private ITaskReopository taskRepository;
 
     @PostMapping("/")
-    public TaskModel create(@RequestBody TaskModel taskModel) {
+    public void create(@RequestBody TaskModel taskModel) {
+        System.out.println("Chegou no Controller");
         var task = this.taskRepository.save(taskModel);
-        return task;
-
+        return;
     }
 }
