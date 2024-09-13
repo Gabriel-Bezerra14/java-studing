@@ -1,4 +1,4 @@
-package br.com.gabrielbezerra.filter;
+package br.com.gabrielbezerra.todolist.filter;
 
 
 import jakarta.servlet.*;
