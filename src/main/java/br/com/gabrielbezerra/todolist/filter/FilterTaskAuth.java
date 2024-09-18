@@ -44,15 +44,15 @@ public class FilterTaskAuth extends OncePerRequestFilter {
                 //Validar usuario
             var user = this.userRepository.findByUsername(username);
             if (user == null) {
-                response.sendError(401);
+                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid credentials");
             } else {
                     //Validar a senha
                 var passwordVerify = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
                 if (passwordVerify.verified) {
-                   // request.setAttribute("id", user.getId());
+                    request.setAttribute("id", user.getId());
                     filterChain.doFilter(request, response);
                 } else {
-                    response.sendError(403);
+                    response.sendError(HttpServletResponse.SC_FORBIDDEN, "Password is incorrect");
                 }
                     //Segue viagem
                 }
@@ -61,4 +61,3 @@ public class FilterTaskAuth extends OncePerRequestFilter {
         }
     }
 }
-
