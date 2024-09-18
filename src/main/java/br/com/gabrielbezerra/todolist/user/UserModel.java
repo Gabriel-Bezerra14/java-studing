@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -18,9 +19,13 @@ public class UserModel {
     @GeneratedValue (generator = "UUID")
     private UUID id;
 
-    @Column(unique = true, nullable = false)
+    @Column(unique = true)
     private String username;
     private String name;
     private String password;
+
+    private String idUser;
+
+    @CreationTimestamp
     private LocalDateTime createdAt;
 }

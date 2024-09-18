@@ -5,7 +5,6 @@ import br.com.gabrielbezerra.todolist.user.IUserRepository;
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.apache.tomcat.util.http.parser.Authorization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -36,23 +35,19 @@ public class FilterTaskAuth extends OncePerRequestFilter {
             String username = credentials[0];
             String password = credentials[1];
 
-            System.out.println("Authorization");
-            System.out.println(username);
-            System.out.println(password);
-
 
                 //Validar usuario
             var user = this.userRepository.findByUsername(username);
             if (user == null) {
-                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid credentials");
+                response.sendError(401);
             } else {
                     //Validar a senha
                 var passwordVerify = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
                 if (passwordVerify.verified) {
-                    request.setAttribute("id", user.getId());
+                    request.setAttribute("idUser", user.getId());
                     filterChain.doFilter(request, response);
                 } else {
-                    response.sendError(HttpServletResponse.SC_FORBIDDEN, "Password is incorrect");
+                    response.sendError(401);
                 }
                     //Segue viagem
                 }

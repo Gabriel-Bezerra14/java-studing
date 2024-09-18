@@ -12,18 +12,6 @@ import java.util.UUID;
 @Entity(name = "tb_tasks")
 public class TaskModel {
 
-    /**
-     *
-     * ID
-     * Usuário (ID_USUARIO)
-     * Descrição
-     * Título
-     * Data de Início
-     * Data de Término
-     * Prioridade
-     */
-
-
     @Id
     private UUID id;
     private String description;
@@ -37,6 +25,4 @@ public class TaskModel {
     private LocalDateTime createdAt;
 
     private UUID idUser;
-
-
 }
