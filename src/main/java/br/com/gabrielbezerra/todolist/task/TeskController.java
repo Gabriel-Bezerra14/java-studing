@@ -18,7 +18,7 @@ public class TeskController {
 
     @PostMapping("/")
     public TaskModel create(@RequestBody TaskModel taskModel, HttpServletRequest request) {
-        var idUser = request.getAttribute("idUser");
+        var idUser = request.getAttribute("id");
         taskModel.setIdUser((UUID) idUser);
         var task = this.taskRepository.save(taskModel);
         return task;
