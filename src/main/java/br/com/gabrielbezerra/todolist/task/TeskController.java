@@ -17,10 +17,10 @@ public class TeskController {
     private ITaskReopository taskRepository;
 
     @PostMapping("/")
-    public void create(@RequestBody TaskModel taskModel, HttpServletRequest request) {
+    public TaskModel create(@RequestBody TaskModel taskModel, HttpServletRequest request) {
         var idUser = request.getAttribute("idUser");
         taskModel.setIdUser((UUID) idUser);
         var task = this.taskRepository.save(taskModel);
-        return;
+        return task;
     }
 }
