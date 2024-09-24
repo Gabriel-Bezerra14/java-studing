@@ -1,0 +1,10 @@
+br\com\gabrielbezerra\todolist\filter\FilterTaskAuth.class
+br\com\gabrielbezerra\todolist\errors\ExceptionHandlerController.class
+br\com\gabrielbezerra\todolist\utils\Utils.class
+br\com\gabrielbezerra\todolist\task\TaskModel.class
+br\com\gabrielbezerra\todolist\task\ITaskReopository.class
+br\com\gabrielbezerra\todolist\task\TeskController.class
+br\com\gabrielbezerra\todolist\user\UserController.class
+br\com\gabrielbezerra\todolist\user\UserModel.class
+br\com\gabrielbezerra\todolist\TodolistApplication.class
+br\com\gabrielbezerra\todolist\user\IUserRepository.class
