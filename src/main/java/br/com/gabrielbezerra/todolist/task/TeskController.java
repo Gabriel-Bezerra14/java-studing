@@ -41,4 +41,10 @@ public class TeskController {
         var tasks = this.taskRepository.findByIdUser((UUID) idUser);
         return tasks;
     }
+    @PutMapping("/{id}")
+    public TaskModel update(@RequestBody TaskModel taskModel, HttpServletRequest request, @PathVariable UUID id) {
+
+        taskModel.setId(id);
+        return this.taskRepository.save(taskModel);
+    }
 }
