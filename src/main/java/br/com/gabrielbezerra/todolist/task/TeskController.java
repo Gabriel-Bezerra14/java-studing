@@ -43,7 +43,8 @@ public class TeskController {
     }
     @PutMapping("/{id}")
     public TaskModel update(@RequestBody TaskModel taskModel, HttpServletRequest request, @PathVariable UUID id) {
-
+        var idUser = request.getAttribute("id");
+        taskModel.setIdUser((UUID) id);
         taskModel.setId(id);
         return this.taskRepository.save(taskModel);
     }
